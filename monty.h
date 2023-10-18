@@ -1,5 +1,7 @@
 #ifndef __MONTY_H_
 #define __MONTY_H_
+#define _POSIX_C_SOURCE 200809L
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -35,12 +37,10 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-int _getline(char **lineptr, size_t *n, FILE *stream);
 void push(stack_t**stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 int check_digit(char *string);
 int change(int n,stack_t** t);
-void *_realloc(void *ptr, size_t size);
 int check_empty(char *arg);
 #endif 

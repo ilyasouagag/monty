@@ -30,10 +30,10 @@ int main(int ac, char **av)
 
 	if (tokens == NULL)
 	{
-		fprintf(stderr, "Error: Memory allocation for tokens failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	while ((read = _getline(&line, &len, file) != -1))
+	while ((read = getline(&line, &len, file) != -1))
 	{
 		if(!check_empty(line))
 			continue;
@@ -46,6 +46,8 @@ int main(int ac, char **av)
 		{
 			/*handle line filled with space*/
 			fprintf(stderr, "L%d: unknown instruction %s\n", curr_line, tokens[0]);
+			free(line);
+			free(tokens);
 			exit(EXIT_FAILURE);
 		}
 	}
