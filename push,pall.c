@@ -57,7 +57,9 @@ int check_digit(char *string)
 
 	for (i = 0; string[i] != '\0'; i++)
 	{
-		if (!((string[i] >= '0' && string[i] <= '9') || string[i] == '-'))
+		if (string[i] == '-' && i == 0)
+			continue;
+		if (!(string[i] >= '0' && string[i] <= '9'))
 			return (0);
 	}
 
