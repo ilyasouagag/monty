@@ -15,11 +15,6 @@ int change(int n,stack_t**t)
 		fprintf(stderr,"L%d: unknown instruction %s\n",n,tokens[0]);
 		exit(EXIT_FAILURE);
 	}
-	else if(tokens[1] !=NULL && strcmp(tokens[0],"push") != 0)
-	{
-		fprintf(stderr,"L%d: unknown instruction %s\n",n,tokens[0]);
-		exit(EXIT_FAILURE);
-	}
 	i = 0;
 
 	while (specific[i].opcode)
