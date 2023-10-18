@@ -42,6 +42,7 @@ int main(int ac, char **av)
 		}
 
 	}
+	free(line);
 	free(tokens);
 	fclose(file);
 	return (0);

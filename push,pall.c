@@ -3,15 +3,15 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top;
 
-	if(!check_digit(tokens[1]) || !tokens[1])
+	if (!check_digit(tokens[1]) || !tokens[1])
 	{
-		fprintf(stderr,"L%d: usage: push integer",line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
 	{
-		fprintf(stderr,"Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	top->prev = NULL;
@@ -28,15 +28,20 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack) = top;
 	}
 }
- void pall(stack_t **stack, unsigned int line_number)
- {
-	stack_t* current = *stack;
+void pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
 	(void)line_number;
-	for(;current !=NULL;current = current->next)
+	for (; current != NULL; current = current->next)
 	{
-		printf("%d\n",current->n);
+		printf("%d\n", current->n);
 	}
- }
+}
+void pint(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	printf("%d\n", (*stack)->n);
+}
 int check_digit(char *string)
 {
 	int i;

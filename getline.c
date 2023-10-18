@@ -27,7 +27,7 @@ int _getline(char **lineptr, size_t *n, FILE *stream)
 
     if ((len + 1) < 256)
     {
-        ptr = realloc(*lineptr, 256);
+        ptr = _realloc(*lineptr, 256);
         if (ptr == NULL)
             return (-1);
         *lineptr = ptr;
@@ -36,4 +36,25 @@ int _getline(char **lineptr, size_t *n, FILE *stream)
 
     strcpy(*lineptr, line);
     return (len);
+}
+void *_realloc(void *ptr, size_t size)
+{
+    void *new_data = NULL;
+
+    if (size)
+    {
+        if (!ptr)
+        {
+            return malloc(size);
+        }
+
+        new_data = malloc(size);
+        if (new_data)
+        {
+            memcpy(new_data, ptr, size);
+            free(ptr);
+        }
+    }
+
+    return new_data;
 }

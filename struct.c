@@ -7,6 +7,7 @@ int change(int n,stack_t**t)
 	instruction_t specific[] = {
 		{"push",push},
 		{"pall",pall},
+		{"pint",pint},
 		{NULL, NULL}};
 	if (strcmp(tokens[0], "push") == 0  && tokens[1] == NULL) 
 	{
