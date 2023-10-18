@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 /**
  * main - The point were everything bigen
  *
@@ -8,6 +8,7 @@
  */
 int main(int ac, char **av)
 {
+	(void)av;
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -28,12 +29,14 @@ char **line_tok(char *line, char **token)
 
 void get_line(char *file_name)
 {
-	char *token[2];
+	char *token[3];
+	char** str;
 	FILE *file = fopen(file_name, "r");
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t read;
+	char *line;
+	int read;
+	int curr_line = 1;
 
+	line = malloc(100);
 	if (file == NULL) 
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file_name);
@@ -41,9 +44,11 @@ void get_line(char *file_name)
 	}
 
 
-	while ((read = getline(&line, &len, file)) != -1)
+	while ((read = _getline(file, line)))
 	{
-		line_tok(line, token);
+		str = line_tok(line, token);
+		change(str, &curr_line);
+		curr_line++;
 	}
 	free(line);
 	fclose(file);
