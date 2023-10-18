@@ -14,8 +14,13 @@ int main(int ac, char **av)
 	size_t len =0;
 	int read;
 	int curr_line = 0;
-	FILE *file = fopen(av[1],"r");
-	(void)ac;
+	FILE *file;
+	if(ac != 2)
+	{
+		fprintf(stderr,"USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	file = fopen(av[1],"r");
 	if (!file)
 	{
 		fprintf(stderr,"Error: Can't open file %s\n",av[1]);
