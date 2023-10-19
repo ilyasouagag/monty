@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * change - Call function based on the Opcode
  *

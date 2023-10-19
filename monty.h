@@ -37,6 +37,8 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+int change(int n, stack_t **t);
+void loop_into_lines(char *line, FILE *file);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
@@ -49,10 +51,9 @@ void m_div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 int check_digit(char *string);
-int change(int n, stack_t **t);
 int check_empty(char *arg);
 void check_args(char *line, FILE *file, int curr_line, stack_t *stack);
-void free_stack(stack_t *stack);
+void check_args2(char *line, FILE *file, int curr_line, stack_t *stack);
 void free_before_exit(FILE *file, char *line, char **token, stack_t *stack);
-void loop_into_lines(char *line, FILE *file);
+void free_stack(stack_t *stack);
 #endif
