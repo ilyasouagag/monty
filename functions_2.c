@@ -50,7 +50,7 @@ void sub(stack_t **stack, unsigned int line_number)
  * @stack: A pointer to the stack.
  * @line_number: The line number in the script (unused here).
  */
-void m_div(stack_t **stack, unsigned int line_number)
+void div(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top1 = *stack;
 	stack_t *top2 = (*stack)->next;
