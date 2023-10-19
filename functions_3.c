@@ -19,6 +19,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	}
 	free(top1);
 }
+
 /**
  * pchar - Print the character representation of the top element on the stack.
  * @stack: A pointer to the stack.
@@ -31,6 +32,12 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	printf("%c\n", (char)value);
 }
+
+/**
+ * pstr - Print in one line all of the stack data
+ * @stack: A pointer to the stack.
+ * @line_number: The line number in the script.
+ */
 void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top = *stack;
@@ -47,6 +54,13 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+/**
+ * rotl - The top element of the stack becomes the last one,
+ * and the second top element of the stack becomes the first one.
+ * @stack: A pointer to the stack.
+ * @line_number: The line number in the script.
+ */
 void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top = *stack;
@@ -65,6 +79,13 @@ void rotl(stack_t **stack, unsigned int line_number)
 	top->prev = current;
 	top->next = NULL;
 }
+
+/**
+ * rotr - The last element of the stack becomes the top
+ * element of the stack
+ * @stack: A pointer to the stack.
+ * @line_number: The line number in the script.
+ */
 void rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top = *stack;
