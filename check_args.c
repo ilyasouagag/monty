@@ -89,3 +89,24 @@ void check_args2(char *line, FILE *file, int curr_line, stack_t *stack)
 		exit(EXIT_FAILURE);
 	}
 }
+void check_args3(char *line, FILE *file, int curr_line, stack_t *stack)
+{
+	if (strcmp(tokens[0], "pchar") == 0 && stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", curr_line);
+		free(line);
+		free(tokens);
+		free_stack(stack);
+		fclose(file);
+		exit(EXIT_FAILURE);
+	}
+	if (strcmp(tokens[0], "pchar") == 0 && stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", curr_line);
+		free(line);
+		free(tokens);
+		free_stack(stack);
+		fclose(file);
+		exit(EXIT_FAILURE);
+	}
+}

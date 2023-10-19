@@ -54,6 +54,7 @@ int check_digit(char *string);
 int check_empty(char *arg);
 void check_args(char *line, FILE *file, int curr_line, stack_t *stack);
 void check_args2(char *line, FILE *file, int curr_line, stack_t *stack);
+void check_args3(char *line, FILE *file, int curr_line, stack_t *stack);
 void free_before_exit(FILE *file, char *line, char **token, stack_t *stack);
 void free_stack(stack_t *stack);
 #endif

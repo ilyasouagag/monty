@@ -64,6 +64,7 @@ void loop_into_lines(char *line, FILE *file)
 		}
 		check_args(line, file, curr_line, stack);
 		check_args2(line, file, curr_line, stack);
+		check_args3(line, file, curr_line, stack);
 		if (!change(curr_line, &stack))
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", curr_line, tokens[0]);
