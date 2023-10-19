@@ -89,6 +89,13 @@ void check_args2(char *line, FILE *file, int curr_line, stack_t *stack)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * check_args3 - Check the validity of arguments and stack conditions.
+ * @line: The line from the input file.
+ * @file: The file pointer to the input file.
+ * @curr_line: The current line number in the script.
+ * @stack: A pointer to the stack.
+ */
 void check_args3(char *line, FILE *file, int curr_line, stack_t *stack)
 {
 	if (strcmp(tokens[0], "pchar") == 0 && stack == NULL)
