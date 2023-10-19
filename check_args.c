@@ -107,7 +107,7 @@ void check_args3(char *line, FILE *file, int curr_line, stack_t *stack)
 		fclose(file);
 		exit(EXIT_FAILURE);
 	}
-	if (strcmp(tokens[0], "pchar") == 0 && stack == NULL)
+	if (strcmp(tokens[0], "pchar") == 0 && (stack->n < 0 || stack->n > 127))
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", curr_line);
 		free(line);
