@@ -10,13 +10,8 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top;
 
-	if (!check_digit(tokens[1]) || !tokens[1])
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free(tokens);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+	(void)line_number;
+
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
 	{
@@ -67,13 +62,6 @@ void pall(stack_t **stack, unsigned int line_number)
 void pint(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	if ((*stack) == NULL)
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
-		free(tokens);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
 	printf("%d\n", (*stack)->n);
 }
 /**
@@ -116,4 +104,133 @@ void free_stack(stack_t *stack)
 		curr = curr->next;
 		free(tmp);
 	}
+}
+
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top = *stack;
+	(void)line_number;
+
+	*stack = top->next;
+
+	if (*stack != NULL)
+	{
+		(*stack)->prev = NULL;
+	}
+
+	free(top);
+}
+
+void swap(stack_t **stack, unsigned int line_number)
+{
+
+	stack_t *top1 = *stack;
+	stack_t *top2 = (*stack)->next;
+	(void)line_number;
+
+	top1->prev = top2;
+	top1->next = top2->next;
+	top2->prev = NULL;
+	top2->next = top1;
+
+	*stack = top2;
+}
+
+void add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top1 = *stack;
+	stack_t *top2 = (*stack)->next;
+	(void)line_number;
+
+	top2->n += top1->n;
+
+	*stack = top2;
+	if (top1->next != NULL)
+		top1->next->prev = NULL;
+	free(top1);
+}
+
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
+
+void sub(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top1 = *stack;
+	stack_t *top2 = (*stack)->next;
+	(void)line_number;
+
+	top2->n -= top1->n;
+
+	*stack = top2;
+	if (top1->next != NULL)
+		top1->next->prev = NULL;
+	free(top1);
+}
+
+void m_div(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top1 = *stack;
+	stack_t *top2 = (*stack)->next;
+	(void)line_number;
+
+	top2->n /= top1->n;
+
+	*stack = top2;
+	if (top1->next != NULL)
+		top1->next->prev = NULL;
+	free(top1);
+}
+
+void mul(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top1 = *stack;
+	stack_t *top2 = (*stack)->next;
+	(void)line_number;
+
+	top2->n *= top1->n;
+
+	*stack = top2;
+	if (top1->next != NULL)
+		top1->next->prev = NULL;
+	free(top1);
+}
+
+void mod(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top1 = *stack;
+	stack_t *top2 = (*stack)->next;
+	(void)line_number;
+
+	top2->n %= top1->n;
+
+	*stack = top2;
+	if (top1->next != NULL)
+	{
+		top1->next->prev = NULL;
+	}
+	free(top1);
+}
+
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	int value;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	value = (*stack)->n;
+
+	if ((*stack)->n < 0 || (*stack)->n > 127)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%c\n", (char)value);
 }

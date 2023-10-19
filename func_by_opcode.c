@@ -15,8 +15,16 @@ int change(int current_line, stack_t **s)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"sub", sub},
+		{"div", m_div},
+		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}};
-	if (strcmp(tokens[0], "push") == 0  && tokens[1] == NULL)
+	if (strcmp(tokens[0], "push") == 0 && tokens[1] == NULL)
 	{
 
 		fprintf(stderr, "L%d: unknown instruction %s\n", current_line, tokens[0]);
