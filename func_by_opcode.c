@@ -25,6 +25,7 @@ int change(int current_line, stack_t **s)
 		{"pchar", pchar},
 		{"pstr", pstr},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}};
 	if (strcmp(tokens[0], "push") == 0 && tokens[1] == NULL)
 	{
