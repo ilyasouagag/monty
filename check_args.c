@@ -80,6 +80,7 @@ void check_args2(char *line, FILE *file, int curr_line, stack_t *stack)
 	{
 		fprintf(stderr, "L%u: division by zero\n", curr_line);
 		free_before_exit(file, line, tokens, stack);
+		exit(EXIT_FAILURE);
 	}
 	if (strcmp(tokens[0], "sub") == 0 && (stack == NULL || stack->next == NULL))
 	{
