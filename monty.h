@@ -50,6 +50,7 @@ void sub(stack_t **stack, unsigned int line_number);
 void m_div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
 int check_digit(char *string);
 int check_empty(char *arg);
 void check_args(char *line, FILE *file, int curr_line, stack_t *stack);
