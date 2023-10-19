@@ -4,16 +4,16 @@ In computer science, **queues** and **stacks** are abstract data structures used
 
 ## Stack - LIFO
 A **stack** is a Last-In-First-Out (LIFO) data structure, meaning the most recently added element is the first one to be removed.
-**In the world of stacks, fear is just a lie;**
 
+**In the world of stacks, fear is just a lie;**
 --> **Where the last in is always the first out.** 🤐
 
 ![](https://media2.giphy.com/media/6kyrz1j5uhJdK/giphy.gif?cid=ecf05e47yom7q74ipeaplcgbgkkyd1tyhqp8hgouu52fb5k1&ep=v1_gifs_search&rid=giphy.gif&ct=g)
 
 ### Queue
 A **queue** is a First-In-First-Out (FIFO) data structure, where the first element added is the first one to be removed.
-**In the world of *Queues* :**
 
+**In the world of *Queues* :**
 --> **Every entity must patiently await its turn, defining a line that's justly right.**
 
 ![](https://media2.giphy.com/media/3o6ZsWEv7nktgfNx7y/giphy.gif?cid=ecf05e47kvqy30l7jez7wm0gudhpjv3uqx3mpyevtg2xdrit&ep=v1_gifs_related&rid=giphy.gif&ct=g)
