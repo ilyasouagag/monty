@@ -23,6 +23,7 @@ int change(int current_line, stack_t **s)
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}};
 	if (strcmp(tokens[0], "push") == 0 && tokens[1] == NULL)
 	{

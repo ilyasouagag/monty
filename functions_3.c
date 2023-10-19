@@ -31,3 +31,19 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	printf("%c\n", (char)value);
 }
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top = *stack;
+	(void)line_number;
+
+	while (top != NULL)
+	{
+		if (top->n == 0 || top->n < 0 || top->n > 127)
+		{
+			break;
+		}
+		printf("%c", (char)top->n);
+		top = top->next;
+	}
+	printf("\n");
+}
