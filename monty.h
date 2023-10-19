@@ -43,11 +43,7 @@ void pint(stack_t **stack, unsigned int line_number);
 int check_digit(char *string);
 int change(int n, stack_t **t);
 int check_empty(char *arg);
-<<<<<<< HEAD
 void free_stack(stack_t *stack);
 void free_before_exit(FILE *file,char * line, char **token, stack_t *stack);
 void loop_into_lines(char *line, FILE *file);
 #endif 
-=======
-#endif
->>>>>>> e8e379ccaef4813fb6380a585a747160c0ee1809
