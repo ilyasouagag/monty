@@ -47,3 +47,19 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t* top = *stack;
+	stack_t* current = *stack;
+	(void)line_number;
+
+	(*stack) = (*stack)->next;
+	(*stack)->prev = NULL;
+	while(current->next != NULL)
+	{
+		current = current->next;
+	}
+	current->next = top;
+	top->prev = current;
+	top->next = NULL;
+}
