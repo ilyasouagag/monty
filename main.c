@@ -88,7 +88,7 @@ void check_args(char *line, FILE *file, int curr_line, stack_t *stack)
 	}
 	if (strcmp(tokens[0], "pint") == 0 && stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty", curr_line);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", curr_line);
 		free(line);
 		free(tokens);
 		free_stack(stack);
@@ -192,7 +192,6 @@ void free_before_exit(FILE *file, char *line, char **token, stack_t *stack)
 	free(token);
 	free_stack(stack);
 	fclose(file);
-	exit(EXIT_FAILURE);
 }
 /**
  * check_empty - checks the case of emptyline
