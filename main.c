@@ -1,5 +1,5 @@
 #include "monty.h"
-char **tokens = NULL;
+char **tokens;
 /**
  * main - The point were everything bigen
  *
@@ -9,12 +9,9 @@ char **tokens = NULL;
  */
 int main(int ac, char **av)
 {
-	stack_t *stack = NULL;
 	char *line = NULL;
-	size_t len = 0;
-	int read;
-	int curr_line = 0;
 	FILE *file;
+
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -27,15 +24,31 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	tokens = (char **)malloc(3 * sizeof(char *));
-
 	if (tokens == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	loop_into_lines(line, file);
+	return (0);
+}
+
+/**
+ * loop_into_lines - loop through lines of a file
+ *
+ * @line: The buffer that will contains a line charachters (sting)
+ * @file: Pointer to a file descriptive
+ * Return: Nothing
+ */
+void loop_into_lines(char *line, FILE *file)
+{
+	int read, curr_line = 0;
+	stack_t *stack = NULL;
+	size_t len;
+
 	while ((read = getline(&line, &len, file) != -1))
 	{
-		if(!check_empty(line))
+		if (!check_empty(line))
 			continue;
 		curr_line++;
 
@@ -44,18 +57,35 @@ int main(int ac, char **av)
 		tokens[2] = strtok(NULL, " \n\t");
 		if (!change(curr_line, &stack))
 		{
-			/*handle line filled with space*/
 			fprintf(stderr, "L%d: unknown instruction %s\n", curr_line, tokens[0]);
-			free(line);
-			free(tokens);
+			free_before_exit(file, line, tokens, stack);
 			exit(EXIT_FAILURE);
 		}
 	}
-	free(line);
-	free(tokens);
-	fclose(file);
-	return (0);
+	free_before_exit(file, line, tokens, stack);
 }
+/**
+ * free_before_exit - Free the allocated memory in heap
+ *
+ * @file: file discriptive
+ * @token: Array of stings
+ * @stack: Header of the stack
+ * @line: Buffer contains line chracters
+ * Return: Nothing
+ */
+void free_before_exit(FILE *file, char *line, char **token, stack_t *stack)
+{
+	free(line);
+	free(token);
+	free_stack(stack);
+	fclose(file);
+}
+/**
+ * check_empty - checks the case of emptyline
+ *
+ * @arg: THe currnet line
+ * Return: 0 if it is empty and 1 if everything gose ok!
+ */
 int check_empty(char *arg)
 {
 	size_t longueur;
